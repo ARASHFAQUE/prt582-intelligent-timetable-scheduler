@@ -38,7 +38,3 @@ python demo.py
 |------|------|
 | `timetable/models.py` | `Room`, `Lecturer`, `Course`, `SlotAssignment` |
 | `timetable/scheduler.py` | backtracking search + cycle detection |
-| `tests/` | unittest suite mapped to SB01–SB10 |
-| `docs/PRT582_Software_Unit_Testing_Report.md` | assignment report |
-
-Replace the student ID and GitHub URL in the report before submitting.
