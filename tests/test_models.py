@@ -24,11 +24,11 @@ class RoomValidationTests(unittest.TestCase):
 class LecturerValidationTests(unittest.TestCase):
     def test_rejects_preferred_slots_outside_availability(self) -> None:
         with self.assertRaises(ValueError):
-            Lecturer("L1", ["Mon 09:00"], preferred_slots=["Tue 09:00"])
+            Lecturer("Charles Yeo", ["Mon 09:00"], preferred_slots=["Tue 09:00"])
 
     def test_rejects_empty_availability(self) -> None:
         with self.assertRaises(ValueError):
-            Lecturer("L1", [])
+            Lecturer("Charles Yeo", [])
 
     def test_rejects_empty_lecturer_id(self) -> None:
         with self.assertRaises(ValueError):
@@ -36,31 +36,31 @@ class LecturerValidationTests(unittest.TestCase):
 
     def test_rejects_duplicate_slots(self) -> None:
         with self.assertRaises(ValueError):
-            Lecturer("L1", ["Mon 09:00", "Mon 09:00"])
+            Lecturer("Charles Yeo", ["Mon 09:00", "Mon 09:00"])
         with self.assertRaises(ValueError):
-            Lecturer("L1", ["Mon 09:00", "Mon 11:00"], preferred_slots=["Mon 09:00", "Mon 09:00"])
+            Lecturer("Charles Yeo", ["Mon 09:00", "Mon 11:00"], preferred_slots=["Mon 09:00", "Mon 09:00"])
 
 
 class CourseValidationTests(unittest.TestCase):
     def test_rejects_negative_enrolment(self) -> None:
         with self.assertRaises(ValueError):
-            Course("C1", "L1", -1)
+            Course("HIT140", "Charles Yeo", -1)
 
     def test_rejects_self_prerequisite(self) -> None:
         with self.assertRaises(ValueError):
-            Course("C1", "L1", 10, prerequisites=["C1"])
+            Course("HIT140", "Charles Yeo", 10, prerequisites=["HIT140"])
 
     def test_rejects_empty_ids_and_non_integer_enrolment(self) -> None:
         with self.assertRaises(ValueError):
-            Course("", "L1", 10)
+            Course("", "Charles Yeo", 10)
         with self.assertRaises(ValueError):
-            Course("C1", "", 10)
+            Course("HIT140", "", 10)
         with self.assertRaises(ValueError):
-            Course("C1", "L1", True)  # type: ignore[arg-type]
+            Course("HIT140", "Charles Yeo", True)  # type: ignore[arg-type]
 
     def test_rejects_duplicate_prerequisites(self) -> None:
         with self.assertRaises(ValueError):
-            Course("C1", "L1", 10, prerequisites=["C0", "C0"])
+            Course("HIT140", "Charles Yeo", 10, prerequisites=["PRT575", "PRT575"])
 
 
 if __name__ == "__main__":
