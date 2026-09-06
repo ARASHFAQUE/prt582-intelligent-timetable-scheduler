@@ -1,0 +1,6 @@
+[run]
+source = timetable
+omit = tests/*,demo.py,.venv/*
+
+[report]
+show_missing = True
